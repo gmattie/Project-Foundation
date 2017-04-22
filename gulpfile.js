@@ -6,11 +6,11 @@ const gulpUtil = require("gulp-util");
 const minCSS = require("gulp-clean-css");
 const minHTML = require("gulp-htmlmin");
 const postCSS = require("gulp-postcss");
-const rename = require("gulp-rename");
 const sass = require("gulp-sass");
-const sourceMaps = require('gulp-sourcemaps');
+const sourceMaps = require("gulp-sourcemaps");
 const webpack = require("webpack");
 const webpackStream = require("webpack-stream");
+const webpackUglify = require("uglifyjs-webpack-plugin");
 
 //Config
 const config = {
@@ -34,9 +34,6 @@ const paths = {
 
     ROOT: `${PATHS_ROOT}`,
     BUILD: `${PATHS_ROOT}build/`,
-    DATA: `${PATHS_ROOT}data/`,
-    FONTS: `${PATHS_ROOT}fonts/`,
-    IMAGES: `${PATHS_ROOT}images/`,
     SOURCE: `${PATHS_ROOT}source/`
 };
 
@@ -54,8 +51,7 @@ const files = {
     JS: "main.js",
     CSS: "main.css",
     SASS: "main.scss",
-    HTML: "index.html",
-    HTML_MIN: "index-min.html"
+    HTML: "index.html"
 };
 
 //Task Transpile JavaScript
@@ -74,7 +70,7 @@ gulp.task(tasks.TRANSPILE_JS, () => {
                         }
                     }]
                 },
-                plugins: (config.PRODUCTION) ? [new webpack.optimize.UglifyJsPlugin({
+                plugins: (config.PRODUCTION) ? [new webpackUglify({
                                                     compress: {warnings: true},
                                                     sourceMap: (config.DEVELOPMENT)})
                                                ]
@@ -110,33 +106,26 @@ gulp.task(tasks.TRANSPILE_SASS, () => {
 //Task Transpile HTML
 gulp.task(tasks.TRANSPILE_HTML, () => {
 
-    gulp.src(`${paths.ROOT}${files.HTML}`)
-        .pipe((config.PRODUCTION) ? minHTML({collapseWhitespace: true}) : gulpUtil.noop())
-        .pipe((config.PRODUCTION) ? rename(`${files.HTML_MIN}`) : gulpUtil.noop())
-        .pipe((config.PRODUCTION) ? gulp.dest(`${paths.ROOT}`) : gulpUtil.noop())
+    gulp.src(`${paths.SOURCE}${files.HTML}`)
+        .pipe(minHTML({collapseWhitespace: true}))
+        .pipe(gulp.dest(`${paths.BUILD}`))
         .pipe((config.DEVELOPMENT) ? browserSync.stream() : gulpUtil.noop());
 });
 
 //Task Default
-gulp.task("default", [tasks.TRANSPILE_JS, tasks.TRANSPILE_SASS], () => {
-
-    if (config.PRODUCTION) {
-
-        gulp.start(tasks.TRANSPILE_HTML);
-    }
+gulp.task("default", [tasks.TRANSPILE_JS, tasks.TRANSPILE_SASS, tasks.TRANSPILE_HTML], () => {
 
     if (config.DEVELOPMENT) {
         
         browserSync.init({
             server: {
-                baseDir: `${paths.ROOT}`,
-                index: (config.PRODUCTION) ? `${files.HTML_MIN}` : `${files.HTML}`
+                baseDir: `${paths.BUILD}`,
+                index: `${files.HTML}`
             }
         });
 
         gulp.watch(`${paths.SOURCE}${folders.JS}**/*.js`, [tasks.TRANSPILE_JS]);
         gulp.watch(`${paths.SOURCE}${folders.SASS}**/*.scss`, [tasks.TRANSPILE_SASS]);
-        gulp.watch(`${paths.ROOT}${files.HTML}`, [tasks.TRANSPILE_HTML]);
-        gulp.watch(`${paths.DATA}**/*.*`, [tasks.TRANSPILE_JS]);
+        gulp.watch(`${paths.SOURCE}${files.HTML}`, [tasks.TRANSPILE_HTML]);
     }
 });
