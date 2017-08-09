@@ -24,7 +24,7 @@ const tasks = {
 
     TRANSPILE_JS: "transpile-js",
     TRANSPILE_SASS: "transpile-sass",
-    TRANSPILE_HTML: "transpile-html"
+    MINIFY_HTML: "minify-html"
 };
 
 //Paths
@@ -103,22 +103,24 @@ gulp.task(tasks.TRANSPILE_SASS, () => {
         .pipe((config.DEVELOPMENT) ? browserSync.stream() : gulpUtil.noop());
 });
 
-//Task Transpile HTML
-gulp.task(tasks.TRANSPILE_HTML, () => {
+//Task Minify HTML
+gulp.task(tasks.MINIFY_HTML, () => {
 
     gulp.src(`${paths.SOURCE}${files.HTML}`)
-        .pipe(minHTML({collapseWhitespace: true}))
+        .pipe(minHTML({collapseWhitespace: true, removeComments: true, keepClosingSlash: true}))
         .pipe(gulp.dest(`${paths.BUILD}`))
         .pipe((config.DEVELOPMENT) ? browserSync.stream() : gulpUtil.noop());
 });
 
 //Task Default
-gulp.task("default", [tasks.TRANSPILE_JS, tasks.TRANSPILE_SASS, tasks.TRANSPILE_HTML], () => {
+gulp.task("default", [tasks.TRANSPILE_JS, tasks.TRANSPILE_SASS, tasks.MINIFY_HTML], () => {
 
     if (config.DEVELOPMENT) {
         
         browserSync.init({
+
             server: {
+                
                 baseDir: `${paths.BUILD}`,
                 index: `${files.HTML}`
             }
@@ -126,6 +128,6 @@ gulp.task("default", [tasks.TRANSPILE_JS, tasks.TRANSPILE_SASS, tasks.TRANSPILE_
 
         gulp.watch(`${paths.SOURCE}${folders.JS}**/*.js`, [tasks.TRANSPILE_JS]);
         gulp.watch(`${paths.SOURCE}${folders.SASS}**/*.scss`, [tasks.TRANSPILE_SASS]);
-        gulp.watch(`${paths.SOURCE}${files.HTML}`, [tasks.TRANSPILE_HTML]);
+        gulp.watch(`${paths.SOURCE}${files.HTML}`, [tasks.MINIFY_HTML]);
     }
 });
