@@ -70,11 +70,7 @@ gulp.task(tasks.TRANSPILE_JS, () => {
                         }
                     }]
                 },
-                plugins: (config.PRODUCTION) ? [new webpackUglify({
-                                                    compress: {warnings: true},
-                                                    sourceMap: (config.DEVELOPMENT)})
-                                               ]
-                                             : [],
+                plugins: (config.PRODUCTION) ? [new webpackUglify({sourceMap: (config.DEVELOPMENT)})] : [],
                 output: {filename: `${files.JS}`},
                 devtool: (config.DEVELOPMENT) ? "inline-source-map" : ""
             }, webpack)
