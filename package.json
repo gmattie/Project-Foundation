@@ -1,35 +1,30 @@
 {
-  "name": "name",
-  "version": "1.0.0",
-  "description": "description",
-  "author": "author",
-  "license": "license",
-  "main": "gulpfile.js",
-  "scripts": {
-    "dev": "gulp --development",
-    "prod": "gulp --production",
-    "dev-prod": "gulp --development --production"
-  },
-  "devDependencies": {
-    "autoprefixer": "^7.2.3",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "browser-sync": "^2.18.13",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.9.0",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-postcss": "^7.0.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.1",
-    "gulp-util": "^3.0.8",
-    "uglify-js": "^3.2.2",
-    "uglifyjs-webpack-plugin": "^1.2.4",
-    "webpack": "^3.10.0",
-    "webpack-stream": "^4.0.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+    "name": "name",
+    "version": "1.0.0",
+    "description": "description",
+    "author": "author",
+    "license": "license",
+    "main": "webpack.config.js",
+    "scripts": {
+        "dev": "webpack --mode development --watch",
+        "prod": "webpack --mode production",
+        "dev-prod": "webpack --mode production --watch"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.1.2",
+        "@babel/preset-env": "^7.1.0",
+        "autoprefixer": "^9.1.5",
+        "babel-loader": "^8.0.4",
+        "browser-sync": "^2.24.7",
+        "browser-sync-webpack-plugin": "^2.2.2",
+        "css-loader": "^1.0.0",
+        "mini-css-extract-plugin": "^0.4.3",
+        "node-sass": "^4.9.3",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "postcss-loader": "^3.0.0",
+        "sass-loader": "^7.1.0",
+        "uglifyjs-webpack-plugin": "^2.0.1",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.2"
+    }
 }

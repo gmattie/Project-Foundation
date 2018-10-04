@@ -1,17 +1,26 @@
-# **Project Foundation**
-Infrastructure of files, folders, dependencies and tasks for the development of JavaScript, SASS, and HTML based projects.
+<div align="center">
+    <h1><strong>PROJECT FOUNDATION</strong></h1>
+    <h3>A bootstrap repository containing an infrastructure of files, folders, dependencies and tasks for the development of JavaScript, SASS, and HTML based projects.</h3>
+    <h1></h1>
+</div>
 
-## **Install Node.js**
-Installation of Node.js is required:  [**Download Here**](https://nodejs.org/en/)
+## **1 – Install Node.js**
+An installation of Node.js is required:  [**Download Here**](https://nodejs.org/en/)
 
-## **Install Development Dependencies**
-Installation of development dependencies (*Node Modules*) are required.  Enter the following CLI command at the project root folder to install:
+## **2 – Download or Clone Repository**
+Download the [**Project Foundation zip file**](https://github.com/gmattie/Project-Foundation/archive/master.zip) or clone the repository by entering the following CLI command at the desired project location:
+```
+git clone https://github.com/gmattie/Project-Foundation.git
+```
+
+## **3 – Install Development Dependencies**
+Installation of development dependencies ( *Node Modules* ) are required.  Install them by entering the following CLI command at the project root folder:
 
 ```
 npm install
 ```
 
-## **Build**
+## **4 – Build Scripts**
 The following build scripts can be executed by entering their CLI commands at the project root folder:
 
 #### **Development**
@@ -19,9 +28,8 @@ The following build scripts can be executed by entering their CLI commands at th
 npm run dev
 ```
 - Transpiles JavaScript code and bundles modules to a single JavaScript file in the */build/js/* directory using [**Babel**](http://babeljs.io/) and [**Webpack**](https://webpack.js.org/). 
-- Transpiles SASS code, adds vendor prefixes and bundles modules to a single CSS file in the */build/css/* directory using [**Gulp Sass**](https://github.com/dlmanning/gulp-sass) and [**Autoprefixer**](https://github.com/postcss/autoprefixer).
-- Duplicates, minifies and moves the */source/index.html* file to the */build* directory using [**Gulp HTML Min**](https://github.com/jonschlinkert/gulp-htmlmin).
-- Generates inline sourcemaps for JavaScript and SASS files using [**Gulp Sourcemaps**](https://github.com/floridoo/gulp-sourcemaps) and [**UgfifyJS Webpack Plugin**](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
+- Transpiles Sass code, adds vendor prefixes and bundles modules to a single CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**Autoprefixer**](https://github.com/postcss/autoprefixer) and [**Webpack**](https://webpack.js.org/).
+- Generates inline sourcemaps for JavaScript and CSS files using [**Webpack**](https://webpack.js.org/).
 - Opens the project in the default web browser, creates a local server and facilitates live reloading using [**Browsersync**](https://browsersync.io/).
 
 #### **Production**
@@ -29,18 +37,17 @@ npm run dev
 npm run prod
 ```
 - Transpiles JavaScript code and bundles modules to a single, minified JavaScript file in the */build/js/* directory using [**Babel**](http://babeljs.io/), [**Webpack**](https://webpack.js.org/) and [**UgfifyJS Webpack Plugin**](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
-- Transpiles SASS code, adds vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Gulp Sass**](https://github.com/dlmanning/gulp-sass), [**Autoprefixer**](https://github.com/postcss/autoprefixer) and [**Gulp Clean CSS**](https://github.com/scniro/gulp-clean-css).
-- Duplicates, minifies and moves the */source/index.html* file to the */build* directory using [**Gulp HTML Min**](https://github.com/jonschlinkert/gulp-htmlmin).   
+- Transpiles Sass code, adds vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**Autoprefixer**](https://github.com/postcss/autoprefixer) and the [**Optimize CSS Assets Webpack Plugin**](https://github.com/NMFR/optimize-css-assets-webpack-plugin). 
 
 #### **Development & Production**
 ```
 npm run dev-prod
 ```
 - Transpiles JavaScript code and bundles modules to a single, minified JavaScript file in the */build/js/* directory using [**Babel**](http://babeljs.io/), [**Webpack**](https://webpack.js.org/) and [**UgfifyJS Webpack Plugin**](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
-- Transpiles SASS code, adds vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Gulp Sass**](https://github.com/dlmanning/gulp-sass), [**Autoprefixer**](https://github.com/postcss/autoprefixer) and [**Gulp Clean CSS**](https://github.com/scniro/gulp-clean-css).
-- Duplicates, minifies and moves the */source/index.html* file to the */build* directory using [**Gulp HTML Min**](https://github.com/jonschlinkert/gulp-htmlmin).
-- Generates inline sourcemaps for JavaScript and SASS files using [**Gulp Sourcemaps**](https://github.com/floridoo/gulp-sourcemaps) and [**UgfifyJS Webpack Plugin**](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
-- Opens the project in the default web browser, creates a local server and facilitates live reloading using [**Browsersync**](https://browsersync.io/).   
+- Transpiles Sass code, adds vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**Autoprefixer**](https://github.com/postcss/autoprefixer) and the [**Optimize CSS Assets Webpack Plugin**](https://github.com/NMFR/optimize-css-assets-webpack-plugin).
+- Generates inline sourcemaps for JavaScript and CSS files using [**Webpack**](https://webpack.js.org/).
+- Opens the project in the default web browser, creates a local server and facilitates live reloading using [**Browsersync**](https://browsersync.io/).
+
+*NOTE:  Build processes can be terminated by pressing `Ctrl+C` on the CLI of the project root folder.*
 
 ---
-Build processes can be terminated by pressing `Ctrl+C` on the CLI of the project root folder.
