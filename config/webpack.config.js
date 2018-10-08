@@ -2,9 +2,14 @@
  * Imports
  * 
  */
-const autoprefixer = require("autoprefixer");
 const path = require("path");
-const webpack = require("webpack");
+
+/**
+ * Constants
+ * 
+ */
+const BUILD_DIR = path.resolve(__dirname, "../resources/build/");
+const SOURCE_DIR = path.resolve(__dirname, "../resources/source/");
 
 /**
  * Plugins
@@ -16,28 +21,22 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 /**
- * Constants
- * 
- */
-const BUILD_DIR = "./resources/build/";
-const SOURCE_DIR = "./resources/source/";
-
-
-/**
  * The Webpack configuration object contains the following keys:
  * 
  *     Entry:  An object that dictates where Webpack enters the application to start building the bundles.
  *     Module:  Options that determine how the different types of modules within a project will be treated.
  *     Optimization:  Executed optimizations when in Production mode.
- *     Plugins:  Customization of the Webpack build process.
  *     Output:  An object that dictates where Webpack will build the bundles.
+ *     Plugins:  Customization of the Webpack build process.
+ *     Stats:  Options that control the displayed bundle information during the build process.
  * 
  */
+
 const config = {
     entry: {
         index: [
-            `${SOURCE_DIR}js/index.js`,
-            `${SOURCE_DIR}sass/index.scss`
+            path.resolve(SOURCE_DIR, "js/index.js"),
+            path.resolve(SOURCE_DIR, "sass/index.scss")
         ]
     },
     module: {
@@ -46,7 +45,10 @@ const config = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
+                    loader: 'babel-loader',
+                    options: {
+                        configFile: path.resolve(__dirname, "babel.config.js")
+                    }
                 }
             },
             {
@@ -55,7 +57,14 @@ const config = {
                 use: [
                     MiniCSSExtractPlugin.loader,
                     "css-loader",
-                    "postcss-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            config: {
+                                path: __dirname
+                            }
+                        }
+                    },
                     "sass-loader"
                 ]
             }
@@ -70,14 +79,11 @@ const config = {
             new OptimizeCSSAssetsPlugin({})
         ]
     },
+    output: {
+        path: path.resolve(BUILD_DIR, "js"),
+        filename: "[name].js"
+    },
     plugins: [
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                postcss: [
-                    autoprefixer()
-                ]
-            }
-        }),
         new MiniCSSExtractPlugin({
             filename: "../css/[name].css"
         }),
@@ -85,13 +91,13 @@ const config = {
             host: "localhost",
             port: 3000,
             server: {
-                baseDir: [path.resolve(__dirname, BUILD_DIR)]
+                baseDir: BUILD_DIR
             }
         })
     ],
-    output: {
-        path: path.resolve(__dirname, BUILD_DIR, "js"),
-        filename: "[name].js"
+    stats: {
+        entrypoints: false,
+        children: false
     }
 };
 

@@ -6,25 +6,31 @@
     "license": "license",
     "main": "webpack.config.js",
     "scripts": {
-        "dev": "webpack --mode development --watch",
-        "prod": "webpack --mode production",
-        "dev-prod": "webpack --mode production --watch"
+        "dev": "webpack --config ./config/webpack.config.js --mode development --watch",
+        "prod": "webpack --config ./config/webpack.config.js --mode production",
+        "dev-prod": "webpack --config ./config/webpack.config.js --mode production --watch"
     },
     "devDependencies": {
         "@babel/core": "^7.1.2",
         "@babel/preset-env": "^7.1.0",
-        "autoprefixer": "^9.1.5",
         "babel-loader": "^8.0.4",
-        "browser-sync": "^2.24.7",
+        "browser-sync": "^2.26.0",
         "browser-sync-webpack-plugin": "^2.2.2",
         "css-loader": "^1.0.0",
         "mini-css-extract-plugin": "^0.4.3",
         "node-sass": "^4.9.3",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
         "postcss-loader": "^3.0.0",
+        "postcss-preset-env": "^6.0.10",
         "sass-loader": "^7.1.0",
         "uglifyjs-webpack-plugin": "^2.0.1",
         "webpack": "^4.20.2",
         "webpack-cli": "^3.1.2"
-    }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "maintained node versions",
+        "not dead"
+    ]
 }

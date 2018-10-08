@@ -28,7 +28,7 @@ The following build scripts can be executed by entering their CLI commands at th
 npm run dev
 ```
 - Transpiles JavaScript code and bundles modules to a single JavaScript file in the */build/js/* directory using [**Babel**](http://babeljs.io/) and [**Webpack**](https://webpack.js.org/). 
-- Transpiles Sass code, adds vendor prefixes and bundles modules to a single CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**Autoprefixer**](https://github.com/postcss/autoprefixer) and [**Webpack**](https://webpack.js.org/).
+- Transpiles Sass code, adds required polyfills and vendor prefixes and bundles modules to a single CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**PostCSS**](https://www.npmjs.com/package/postcss) and [**Webpack**](https://webpack.js.org/).
 - Generates inline sourcemaps for JavaScript and CSS files using [**Webpack**](https://webpack.js.org/).
 - Opens the project in the default web browser, creates a local server and facilitates live reloading using [**Browsersync**](https://browsersync.io/).
 
@@ -37,14 +37,14 @@ npm run dev
 npm run prod
 ```
 - Transpiles JavaScript code and bundles modules to a single, minified JavaScript file in the */build/js/* directory using [**Babel**](http://babeljs.io/), [**Webpack**](https://webpack.js.org/) and [**UgfifyJS Webpack Plugin**](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
-- Transpiles Sass code, adds vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**Autoprefixer**](https://github.com/postcss/autoprefixer) and the [**Optimize CSS Assets Webpack Plugin**](https://github.com/NMFR/optimize-css-assets-webpack-plugin). 
+-  Transpiles Sass code, adds required polyfills and vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**PostCSS**](https://www.npmjs.com/package/postcss) and the [**Optimize CSS Assets Webpack Plugin**](https://github.com/NMFR/optimize-css-assets-webpack-plugin). 
 
 #### **Development & Production**
 ```
 npm run dev-prod
 ```
 - Transpiles JavaScript code and bundles modules to a single, minified JavaScript file in the */build/js/* directory using [**Babel**](http://babeljs.io/), [**Webpack**](https://webpack.js.org/) and [**UgfifyJS Webpack Plugin**](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
-- Transpiles Sass code, adds vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**Autoprefixer**](https://github.com/postcss/autoprefixer) and the [**Optimize CSS Assets Webpack Plugin**](https://github.com/NMFR/optimize-css-assets-webpack-plugin).
+- Transpiles Sass code, adds required polyfills and vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**PostCSS**](https://www.npmjs.com/package/postcss) and the [**Optimize CSS Assets Webpack Plugin**](https://github.com/NMFR/optimize-css-assets-webpack-plugin).
 - Generates inline sourcemaps for JavaScript and CSS files using [**Webpack**](https://webpack.js.org/).
 - Opens the project in the default web browser, creates a local server and facilitates live reloading using [**Browsersync**](https://browsersync.io/).
 

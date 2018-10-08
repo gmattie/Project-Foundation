@@ -1,1 +1,3 @@
-console.log("Project Foundation");
+import projectFoundation from "./modules/projectFoundation";
+
+projectFoundation();
