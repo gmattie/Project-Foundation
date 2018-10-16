@@ -80,12 +80,12 @@ const config = {
         ]
     },
     output: {
-        path: path.resolve(BUILD_DIR, "js"),
-        filename: "[name].js"
+        path: BUILD_DIR,
+        filename: "./js/[name].js"
     },
     plugins: [
         new MiniCSSExtractPlugin({
-            filename: "../css/[name].css"
+            filename: "./css/[name].css"
         }),
         new BrowserSyncPlugin({
             host: "localhost",
@@ -113,6 +113,6 @@ module.exports = (env, argv) => {
     if (argv.mode === "development") {
         config.devtool = "inline-source-map";
     }
-    
+
     return config;
 };
