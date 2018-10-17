@@ -1,1 +1,1 @@
-export default () => console.log("Project Foundation");
+export default () => "Project Foundation";

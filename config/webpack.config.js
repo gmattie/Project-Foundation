@@ -53,10 +53,22 @@ const config = {
             },
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
                 use: [
                     MiniCSSExtractPlugin.loader,
-                    "css-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+
+                            /*
+                            *   This option bypasses the management of imported fonts and image files
+                            *   by disabling url() handling.  Imported files must be available in their
+                            *   proper locations, relative to the extracted CSS file, within the /build
+                            *   folder. 
+                            */
+
+                            url: false
+                        }
+                    },
                     {
                         loader: "postcss-loader",
                         options: {
@@ -85,7 +97,7 @@ const config = {
     },
     plugins: [
         new MiniCSSExtractPlugin({
-            filename: "./css/[name].css"
+            filename: "./css/[name].css",
         }),
         new BrowserSyncPlugin({
             host: "localhost",
