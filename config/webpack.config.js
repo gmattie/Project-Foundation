@@ -16,6 +16,7 @@ const SOURCE_DIR = path.resolve(__dirname, "../resources/source/");
  * 
  */
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
@@ -97,7 +98,7 @@ const config = {
     },
     plugins: [
         new MiniCSSExtractPlugin({
-            filename: "./css/[name].css",
+            filename: "./css/[name].css"
         }),
         new BrowserSyncPlugin({
             host: "localhost",
@@ -115,16 +116,29 @@ const config = {
 
 /**
  * Exported function module that returns the Webpack configuration object.  This function is
- * used to alter the configuration object depending on the mode ("development" or "production").
- * In development mode, the following key is added to the Webpack configuration object:
+ * used to alter the configuration object according to the set "development" or "production"
+ * build mode.  The following keys and plugins are modified:
  * 
  *     Devtool:  This option controls how source maps are generated.
+ *     HTMLWebpackPlugin:  Copies and/or minifies "index.html" from the /source folder to the /build folder.
  * 
  */
 module.exports = (env, argv) => {
     if (argv.mode === "development") {
         config.devtool = "inline-source-map";
     }
+
+    config.plugins.push(
+        new HTMLWebpackPlugin({
+            inject: false,
+            minify: (argv.mode === "production") ? {
+                collapseWhitespace: true,
+                removeComments: true
+            } : {},
+            template: path.resolve(SOURCE_DIR, "index.html"),
+            filename: "index.html"
+        })
+    );
 
     return config;
 };

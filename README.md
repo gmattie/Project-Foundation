@@ -1,4 +1,5 @@
 <div align="center">
+    <div style="font-size: 256px;">🎂</div>
     <h1><strong>PROJECT FOUNDATION</strong></h1>
     <h3>A bootstrap repository containing an infrastructure of files, folders, dependencies and tasks for the development of JavaScript, SASS, and HTML based projects.</h3>
     <h1></h1>
@@ -29,7 +30,8 @@ npm run dev
 ```
 - Transpiles JavaScript code and bundles modules to a single JavaScript file in the */build/js/* directory using [**Babel**](http://babeljs.io/) and [**Webpack**](https://webpack.js.org/). 
 - Transpiles Sass code, adds required polyfills and vendor prefixes and bundles modules to a single CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**PostCSS**](https://www.npmjs.com/package/postcss) and [**Webpack**](https://webpack.js.org/).
-- Generates inline sourcemaps for JavaScript and CSS files using [**Webpack**](https://webpack.js.org/).
+- Generates inline sourcemaps for JavaScript and CSS files using [**Webpack Devtool**](https://webpack.js.org/configuration/devtool/).
+- Copies *index.html* from the */source* directory and pastes it to the */build* directory using [**HTML Webpack Plugin**](https://github.com/jantimon/html-webpack-plugin).
 - Opens the project in the default web browser, creates a local server and facilitates live reloading using [**Browsersync**](https://browsersync.io/).
 
 #### **Production**
@@ -37,7 +39,8 @@ npm run dev
 npm run prod
 ```
 - Transpiles JavaScript code and bundles modules to a single, minified JavaScript file in the */build/js/* directory using [**Babel**](http://babeljs.io/), [**Webpack**](https://webpack.js.org/) and [**UgfifyJS Webpack Plugin**](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
--  Transpiles Sass code, adds required polyfills and vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**PostCSS**](https://www.npmjs.com/package/postcss) and the [**Optimize CSS Assets Webpack Plugin**](https://github.com/NMFR/optimize-css-assets-webpack-plugin). 
+-  Transpiles Sass code, adds required polyfills and vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**PostCSS**](https://www.npmjs.com/package/postcss) and the [**Optimize CSS Assets Webpack Plugin**](https://github.com/NMFR/optimize-css-assets-webpack-plugin).
+- Copies *index.html* from the */source* directory and pastes a minified version to the */build* directory using [**HTML Webpack Plugin**](https://github.com/jantimon/html-webpack-plugin).
 
 #### **Development & Production**
 ```
@@ -45,7 +48,8 @@ npm run dev-prod
 ```
 - Transpiles JavaScript code and bundles modules to a single, minified JavaScript file in the */build/js/* directory using [**Babel**](http://babeljs.io/), [**Webpack**](https://webpack.js.org/) and [**UgfifyJS Webpack Plugin**](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
 - Transpiles Sass code, adds required polyfills and vendor prefixes and bundles modules to a single, minified CSS file in the */build/css/* directory using [**Node Sass**](https://www.npmjs.com/package/node-sass), [**PostCSS**](https://www.npmjs.com/package/postcss) and the [**Optimize CSS Assets Webpack Plugin**](https://github.com/NMFR/optimize-css-assets-webpack-plugin).
-- Generates inline sourcemaps for JavaScript and CSS files using [**Webpack**](https://webpack.js.org/).
+- Generates inline sourcemaps for JavaScript and CSS files using [**Webpack Devtool**](https://webpack.js.org/configuration/devtool/).
+- Copies *index.html* from the */source* directory and pastes a minified version to the */build* directory using [**HTML Webpack Plugin**](https://github.com/jantimon/html-webpack-plugin).
 - Opens the project in the default web browser, creates a local server and facilitates live reloading using [**Browsersync**](https://browsersync.io/).
 
 *NOTE:  Build processes can be terminated by pressing `Ctrl+C` on the CLI of the project root folder.*
