@@ -1,7 +1,7 @@
 <div align="center">
-    <div style="font-size: 256px;">🎂</div>
+    <img src="./resources/build/images/BirthdayCake.png" height="500px">
     <h1><strong>PROJECT FOUNDATION</strong></h1>
-    <h3>A bootstrap repository containing an infrastructure of files, folders, dependencies and tasks for the development of JavaScript, SASS, and HTML based projects.</h3>
+    <h3>A bootstrap repository containing an infrastructure of files, folders, dependencies and build scripts for the development of JavaScript, Sass, and HTML based projects.</h3>
     <h1></h1>
 </div>
 
