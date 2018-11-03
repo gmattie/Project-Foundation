@@ -2,8 +2,11 @@
 @import "./modules/fonts.scss";
 
 body {
-    font-family: "Muli";
-    font-size: 34vh;
     color: #FFFFFF;
     background-color: #48BBEE;
+
+    div {
+        font-family: "Muli";
+        font-size: 34vh;
+    }
 }
